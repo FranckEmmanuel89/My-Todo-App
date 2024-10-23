@@ -66,3 +66,18 @@ addBtn.addEventListener('click', () => {
     inputAddTodo.value = ''; 
   }
 });
+
+inputAddTodo.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+      const todoText = inputAddTodo.value.trim();
+      if (todoText !== '' && todoText.length >= 3) {
+        todos.push({ text: todoText, completed: false }); // Ajouter une nouvelle tâche sous forme d'objet
+        inputAddTodo.value = ''; // Vider l'input
+        errorMessage.innerText = '';
+        displayTodos(); // Mettre à jour la liste après ajout
+      } else {
+        errorMessage.innerText = 'Todo needs to be 3 characters or more 😊'
+        inputAddTodo.value = ''; 
+      }
+  }
+});
